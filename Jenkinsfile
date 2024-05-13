@@ -6,9 +6,9 @@ node {
      def mvnHome = tool name: 'Maven3', type: 'maven'
      sh "${mvnHome}/bin/mvn clean compile package"
   }
-  #stage('Email Notifications') {
-    #mail bcc: '', body: 'Welcome to Jenkins Job', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'nareshbandapallybr@gmail.com'
-  #}
+  /* stage('Email Notifications') {
+    mail bcc: '', body: 'Welcome to Jenkins Job', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'nareshbandapallybr@gmail.com'
+  } */
   stage('Slack Notification') {
     slackSend baseUrl: 'https://hooks.slack.com/services/', 
               channel: '#devops-automation', 
