@@ -26,7 +26,7 @@ node {
 
 stage('Deploy to Tomcat') {
       sshagent(['tomcat-dev']) {
-         sh 'scp -o StrictHostKeyChecking=no target/*.war root@172.31.29.242:/opt/apache-tomcat-10.1.24/webapps/'
+         sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@172.31.29.242:/opt/apache-tomcat-10.1.24/webapps/'
       }
    }
   
