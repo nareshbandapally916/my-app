@@ -1,7 +1,8 @@
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '2')), [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([choice(choices: ['master', 'develop'], description: 'github branches for my-app repository', name: 'branch')])])
 node {
   stage('Scm Checkout') {
-    git 'https://github.com/nareshbandapally916/my-app'
+    echo "Pulling changes from the branch ${params.branch}"
+    git url: 'https://github.com/nareshbandapally916/my-app', branch: "${params.branch}"
   }
    stage('Compile Package') {
      def mvnHome = tool name: 'Maven3', type: 'maven'
