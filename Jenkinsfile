@@ -1,3 +1,4 @@
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '2')), [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], parameters([choice(choices: ['master', 'develop'], description: 'github branches for my-app repository', name: 'branch')])])
 node {
   stage('Scm Checkout') {
     git 'https://github.com/nareshbandapally916/my-app'
